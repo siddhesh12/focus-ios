@@ -15,18 +15,26 @@ protocol OverlayViewDelegate: class {
 
 class OverlayView: UIView {
     weak var delegate: OverlayViewDelegate?
-    private let searchButton = InsetButton()
-    private var presented = false
-    private var searchQuery = ""
     private let copyButton = UIButton()
     private let findInPageButton = InsetButton()
+    private let searchButton = InsetButton()
+    private let searchSuggestionsPromptView = SearchSuggestionsPromptView()
     private let topBorder = UIView()
     public var currentURL = ""
-    private let searchSuggestionsPromptView = SearchSuggestionsPromptView()
-
+    private var presented = false
+    private var searchQuery = ""
+    
     init() {
         super.init(frame: CGRect.zero)
         KeyboardHelper.defaultHelper.addDelegate(delegate: self)
+        
+        searchSuggestionsPromptView.backgroundColor = UIConstants.colors.background
+        addSubview(searchSuggestionsPromptView)
+        
+        searchSuggestionsPromptView.snp.makeConstraints { make in
+            make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
+            make.height.greaterThanOrEqualTo(80)
+        }
         
         searchButton.isHidden = true
         searchButton.accessibilityIdentifier = "OverlayView.searchButton"
@@ -42,17 +50,25 @@ class OverlayView: UIView {
         
         topBorder.isHidden = true
         topBorder.alpha = 0
-        topBorder.backgroundColor = UIConstants.Photon.Grey90.withAlphaComponent(0.4)
+//        topBorder.backgroundColor = UIConstants.Photon.Grey90.withAlphaComponent(0.4)
+        topBorder.backgroundColor = UIColor(rgb: 0x42455A)
         addSubview(topBorder)
         
         topBorder.snp.makeConstraints { make in
+//            make.leading.trailing.equalTo(self)
+//            make.top.equalTo(searchButton.snp.top)
+//            make.height.equalTo(1)
+            
+            make.top.equalTo(searchSuggestionsPromptView.snp.bottom)
             make.leading.trailing.equalTo(self)
-            make.top.equalTo(searchButton.snp.top)
             make.height.equalTo(1)
         }
 
         searchButton.snp.makeConstraints { make in
-            make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
+//            make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
+            
+            make.top.equalTo(topBorder.snp.bottom)
+            make.leading.trailing.equalTo(safeAreaLayoutGuide)
         }
         
         let padding = UIConstants.layout.searchButtonInset
@@ -90,15 +106,6 @@ class OverlayView: UIView {
         copyButton.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(safeAreaLayoutGuide)
             make.height.equalTo(56)
-        }
-        
-        searchSuggestionsPromptView.backgroundColor = UIConstants.colors.background
-        addSubview(searchSuggestionsPromptView)
-        
-        searchSuggestionsPromptView.snp.makeConstraints { make in
-            make.top.equalTo(searchButton.snp.bottom)
-            make.leading.trailing.equalTo(safeAreaLayoutGuide)
-            make.height.greaterThanOrEqualTo(80)
         }
     }
 
