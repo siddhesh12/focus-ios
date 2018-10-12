@@ -38,6 +38,7 @@ protocol WebControllerDelegate: class {
     func webControllerShouldScrollToTop(_ controller: WebController) -> Bool
     func webController(_ controller: WebController, didUpdateTrackingProtectionStatus trackingStatus: TrackingProtectionStatus)
     func webController(_ controller: WebController, didUpdateFindInPageResults currentResult: Int?, totalResults: Int?)
+    func webController(_ controller: WebController, didUpdateMetadata metadata: [String: Any])
 }
 
 class WebViewController: UIViewController, WebController {
@@ -294,6 +295,10 @@ extension WebViewController: WKScriptMessageHandler {
                 delegate?.webController(self, didUpdateFindInPageResults: nil, totalResults: totalResults)
             }
             return
+        } else if message.name == "pageMetadataHelper" {
+            let data = message.body as! [String: Any]
+            delegate?.webController(self, didUpdateMetadata: data)
+            //TODO: Handle
         }
         
         guard let body = message.body as? [String: String],

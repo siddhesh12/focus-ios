@@ -1115,6 +1115,10 @@ extension BrowserViewController: WebControllerDelegate {
         }
     }
     
+    func webController(_ controller: WebController, didUpdateMetadata metadata: [String: Any]) {
+        print("did update metadata")
+    }
+
     func webControllerDidStartNavigation(_ controller: WebController) {
         if (!SearchHistoryUtils.isFromURLBar && !SearchHistoryUtils.isNavigating) {
             SearchHistoryUtils.pushSearchToStack(with: (urlBar.url?.absoluteString)!)
@@ -1139,6 +1143,37 @@ extension BrowserViewController: WebControllerDelegate {
         toggleToolbarBackground()
         toggleURLBarBackground(isBright: !urlBar.isEditing)
         urlBar.progressBar.hideProgressBar()
+        
+        // Update the URL (handles Google AMP edge case:
+        print("looking for metadata now!")
+        webViewController.evaluate("__firefox__.metadata && __firefox__.metadata.getMetadata()") { (result, error) in
+            print("in here")
+            print(result)
+            guard error == nil else {
+                print(error)
+                return
+            }
+            
+            
+            
+            guard let dict = result as? [String: Any] else { return }
+                /*,
+                let pageURL = tab.url?.displayURL,
+                let pageMetadata = PageMetadata.fromDictionary(dict) else {
+                    log.debug("Page contains no metadata!")
+                    return
+            } */
+            
+            print(dict)
+            
+            /*
+            let userInfo: [String: Any] = [
+                "pageMetadata": pageMetadata,
+                "url": pageURL
+            ]
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pageMetadataHandler"), object: nil, userInfo: userInfo)
+ */
+        }
     }
 
     func webController(_ controller: WebController, didFailNavigationWithError error: Error) {

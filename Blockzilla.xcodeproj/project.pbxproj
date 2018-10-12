@@ -43,6 +43,7 @@
 		1DD317E120BF1B3000DFA44E /* OnboardingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD317E020BF1B3000DFA44E /* OnboardingTest.swift */; };
 		1DE6DA2220BF410400CE337B /* QuickAddAutocompleteURLTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE6DA2120BF410400CE337B /* QuickAddAutocompleteURLTest.swift */; };
 		1DE903CE20C751D7002E53ED /* FindInPageTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DE903CD20C751D7002E53ED /* FindInPageTest.swift */; };
+		2441B0CA2170FCF70059E765 /* MetadataHelper.js in Resources */ = {isa = PBXBuildFile; fileRef = 2441B0C92170FCF60059E765 /* MetadataHelper.js */; };
 		2696EB04211F540600F0C73F /* SearchHistoryUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2696EB03211F540600F0C73F /* SearchHistoryUtils.swift */; };
 		2825C3665AB14081B262F767 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D051AC1857A0EEEBB833D15 /* SystemConfiguration.framework */; };
 		2B36326E97D2E67E9C684B4B /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 80D9AA926EFBD788739486EB /* CoreTelephony.framework */; };
@@ -368,6 +369,7 @@
 		1DD317E020BF1B3000DFA44E /* OnboardingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingTest.swift; sourceTree = "<group>"; };
 		1DE6DA2120BF410400CE337B /* QuickAddAutocompleteURLTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddAutocompleteURLTest.swift; sourceTree = "<group>"; };
 		1DE903CD20C751D7002E53ED /* FindInPageTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInPageTest.swift; sourceTree = "<group>"; };
+		2441B0C92170FCF60059E765 /* MetadataHelper.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = MetadataHelper.js; sourceTree = "<group>"; };
 		2696EB03211F540600F0C73F /* SearchHistoryUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHistoryUtils.swift; sourceTree = "<group>"; };
 		29B90C056305836CB297FF79 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		427B752EF11959F9C38B12D6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1033,7 +1035,6 @@
 		745DC5DB1F39221100661635 /* OpenInFocus */ = {
 			isa = PBXGroup;
 			children = (
-				16938C0321010C2D00DCD489 /* InfoPlist.strings */,
 				745DC5DC1F39221100661635 /* ActionViewController.swift */,
 				745DC5E11F39221100661635 /* Info.plist */,
 				742C99D31F3A3AD200717D69 /* Assets.xcassets */,
@@ -1269,6 +1270,7 @@
 				F84AFE741DE77FE6005C4DD1 /* LaunchScreen@3x.png */,
 				D38EDB951DCA8A9400E28196 /* LaunchScreen.storyboard */,
 				B3481A541FCF261900CA2EA6 /* AutocompleteCustomUrlViewController.swift */,
+				2441B0C92170FCF60059E765 /* MetadataHelper.js */,
 				1D3BEDF820C5E6C70019B722 /* FindInPage.js */,
 				1D3BEDFA20C5E76A0019B722 /* FindInPageBar.swift */,
 				747ADA171FC38EFC00970132 /* IntroViewController.swift */,
@@ -1672,7 +1674,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				742C99D41F3A3AD200717D69 /* Assets.xcassets in Resources */,
-				16938C0121010C2D00DCD489 /* InfoPlist.strings in Resources */,
 				A89766DA1F57DCA9008183C5 /* (null) in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1703,6 +1704,7 @@
 				6616A36F1BD17EFA00C7E493 /* style.css in Resources */,
 				16ABCD2521406D5500CABBF4 /* Intents.strings in Resources */,
 				D3C047BD1DCBD8ED00402FFB /* SearchEngines.plist in Resources */,
+				2441B0CA2170FCF70059E765 /* MetadataHelper.js in Resources */,
 				D3E2C8FE1D9F17AC00DEBE3D /* disconnect-social.json in Resources */,
 				D3B3232D1BD16A0F00B0EEE4 /* gpl.html in Resources */,
 				74F94FF21FD9CA070047E629 /* Intro.strings in Resources */,
